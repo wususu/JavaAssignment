@@ -7,9 +7,9 @@ public class Worker implements Runnable{
 
 	private WorldCache worldCache;
 	
-	public Worker(WorldCache worldCache) {
+	public Worker() {
 		// TODO Auto-generated constructor stub
-		this.worldCache = worldCache;
+		this.worldCache = WorldCache.getInstance();
 	}
 	
 	@Override
