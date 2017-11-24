@@ -17,13 +17,19 @@ public class ServerSocket {
 	
 	private java.net.ServerSocket server;
 	
+	private static Integer defaultPort = 10889;
+	
 	private Socket socket;
 	
 	public ServerSocket() throws IOException{
+		this(defaultPort);
+	}
+	
+	public ServerSocket(Integer port) throws IOException{
 		this.userList = new CopyOnWriteArrayList<>();
 		this.onlineUser = new ConcurrentHashMap<>();
 		this.msgCache = new ConcurrentHashMap<>();
-		this.server =  new java.net.ServerSocket(10889);
+		this.server =  new java.net.ServerSocket(port);
 
 	}
 	
