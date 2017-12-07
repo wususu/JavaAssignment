@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>实验五</title>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+
+<body>
+<form>
+<div >
+<span id="u_name">用户名</span>: <input type="text" name="u_name" id="u_name"/>
+</div>
+<div>
+<span id="u_pawd">密码</span>: <input type="text" name="u_pawd" id="u_pawd"/>
+</div>
+<div>
+<span id="u_rpawd">确认密码</span>: <input type="text" name="u_rpawd" id="u_rpawd"/> 
+</div>
+<div>
+性别:  <input type="radio"  name="sex" id="man"> 男 <input type="radio" name="sex" id="women"> 女
+</div>
+<div>
+职业: 
+<select>
+<option>学生</option>
+<option selected="selected">职员</option>
+<option>经理</option>
+<option>普通人</option>
+<option>其他</option>
+</select>
+</div>
+
+<div>
+<div>个人爱好:</div>
+<input type="checkbox" name="vehicle" value="computer">电脑网络
+<input type="checkbox" name="vehicle" value="movie">影视娱乐 
+<input type="checkbox" name="vehicle" value="game">棋牌娱乐 
+<br>
+<input type="checkbox" name="vehicle" value="read">读书读报
+<input type="checkbox" name="vehicle" value="food">美酒佳肴
+<input type="checkbox" name="vehicle" value="art">绘画书法
+</div>
+
+<div>
+<p>个人说明:</p>
+<textarea rows="10" cols="30"> 
+</textarea>
+</div>
+
+
+<input type="button" value="submit" id="submit"/>
+<input type="button" value="reset" id="reset"/> 
+</form>
+</body>
+<script type="text/javascript">
+
+function check()
+{
+	var string_builder = "";
+	if($.trim($("input#u_name").val()) == "")
+		{
+			string_builder += $("span#u_name").html() + ",";
+		}
+	if($.trim($("input#u_pawd").val()) == "")
+		{
+		string_builder += $("span#u_pawd").html() + ",";
+		}
+	if($.trim($("input#u_rpawd").val()) == "")
+	{
+		string_builder += $("span#u_rpawd").html() + ",";
+	}
+	if(string_builder.length > 0)
+		{
+			console.log(string_builder + " 不得为空");
+
+		return string_builder + " 不得为空";
+		}
+	else
+		{
+			var pawd = $.trim($("input#u_pawd").val());
+			var rpawd = $.trim($("input#u_rpawd").val());
+			console.log(pawd + " " + rpawd);
+			if(pawd.length != rpawd.length)
+				{
+				console.log(pawd.length + "  " + rpawd.length);
+				console.log("密码不一致1");
+				return "密码不一致";
+				}
+			for(var i=0;i<pawd.length;i++)
+				{
+				if(pawd[i] != rpawd[i]){
+					console.log("密码不一致2");
+
+					return "密码不一致";
+				}
+				}
+			return string_builder;
+		}
+
+	
+	
+	
+}
+
+$("#submit").click(function(){
+	var msg = check();
+	if(msg.length>0)
+		{
+		alert(msg);
+		}
+});
+
+</script>
+</html>
